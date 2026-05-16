@@ -35,12 +35,14 @@ const staticFeatures = {
   starter: [
     "Simulador de preços",
     "40 simulações com IA/mês",
+    "20 pré-visualizações de intensidade/mês",
     "Gestão de Pacientes",
     "1 profissional",
   ],
   pro: [
     "Todas as funcionalidades Starter",
     "100 simulações com IA/mês",
+    "50 pré-visualizações de intensidade/mês",
     "Até 3 profissionais",
     "IA avançada de simulação",
     "IA para automações de marketing",
