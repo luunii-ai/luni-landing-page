@@ -3,7 +3,7 @@ import { Building2, Stethoscope, Loader2, ImagePlus, Sparkles } from "lucide-rea
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { Button } from "@/components/ui/button";
 import demoSampleSrc from "@/assets/demo-sample.jpg";
-import { appLoginUrl } from "@/lib/env";
+import { appLoginUrl, landingPlansUrl } from "@/lib/env";
 import {
   DemoApiError,
   hasDemoBeenUsedLocally,
@@ -30,6 +30,7 @@ const MiniSimulator = () => {
   const [beforeDataUrl, setBeforeDataUrl] = useState<string | null>(null);
   const [procedureApiTipo, setProcedureApiTipo] = useState<string>("");
   const [siliconeAck, setSiliconeAck] = useState(false);
+  const [imageRightsAck, setImageRightsAck] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [afterDataUrl, setAfterDataUrl] = useState<string | null>(null);
@@ -60,6 +61,7 @@ const MiniSimulator = () => {
     setImageFile(null);
     setProcedureApiTipo("");
     setSiliconeAck(false);
+    setImageRightsAck(false);
     setIntensidade("moderado");
     setAfterDataUrl(null);
     setError(null);
@@ -70,6 +72,7 @@ const MiniSimulator = () => {
     setProfile(p);
     setProcedureApiTipo(firstDemoApiTipo(p));
     setSiliconeAck(false);
+    setImageRightsAck(false);
     setIntensidade("moderado");
     setError(null);
     setStep(2);
@@ -99,6 +102,10 @@ const MiniSimulator = () => {
       );
       return;
     }
+    if (!imageRightsAck) {
+      setError("Confirme que você tem direito de usar esta imagem.");
+      return;
+    }
 
     setLoading(true);
     try {
@@ -108,6 +115,7 @@ const MiniSimulator = () => {
         practiceProfile: profile,
         intensidade,
         siliconeAck: proc.requiresSiliconeAck ? true : undefined,
+        imageRightsAck: true,
       });
       setAfterDataUrl(`data:${afterMime};base64,${afterBase64}`);
       setLocalLimit(true);
@@ -133,11 +141,16 @@ const MiniSimulator = () => {
           Você já usou a demonstração gratuita neste navegador (ou limite por IP foi atingido).
         </p>
         <p className="text-xs text-muted-foreground max-w-xs">
-          Crie sua conta para simular quantas vezes precisar, com todas as ferramentas do portal.
+          Assine um plano para simular quantas vezes precisar, com todas as ferramentas do portal.
         </p>
         <Button asChild size="sm" className="rounded-full">
+          <a href={landingPlansUrl} target="_blank" rel="noopener noreferrer">
+            Ver planos
+          </a>
+        </Button>
+        <Button asChild size="sm" variant="outline" className="rounded-full">
           <a href={appLoginUrl} target="_blank" rel="noopener noreferrer">
-            Ir para cadastro / login
+            Entrar no portal
           </a>
         </Button>
       </div>
@@ -272,6 +285,7 @@ const MiniSimulator = () => {
           onChange={(e) => {
             setProcedureApiTipo(e.target.value);
             setSiliconeAck(false);
+            setImageRightsAck(false);
             setError(null);
           }}
         >
@@ -320,6 +334,16 @@ const MiniSimulator = () => {
         </label>
       ) : null}
 
+      <label className="flex items-start gap-2 text-[11px] text-muted-foreground cursor-pointer leading-relaxed">
+        <input
+          type="checkbox"
+          checked={imageRightsAck}
+          onChange={(e) => setImageRightsAck(e.target.checked)}
+          className="mt-0.5 h-4 w-4 shrink-0 rounded border-input"
+        />
+        <span>Confirmo que tenho direito de usar esta imagem (própria ou com autorização).</span>
+      </label>
+
       <div className="space-y-2 flex-1 min-h-0">
         <span className="text-xs font-medium text-foreground block">Foto</span>
         <div className="flex flex-wrap gap-2">
@@ -365,7 +389,12 @@ const MiniSimulator = () => {
       <Button
         type="button"
         className="w-full rounded-full"
-        disabled={loading || !imageFile}
+        disabled={
+          loading ||
+          !imageFile ||
+          !imageRightsAck ||
+          Boolean(selectedProcedure?.requiresSiliconeAck && !siliconeAck)
+        }
         onClick={() => void generate()}
       >
         {loading ? (

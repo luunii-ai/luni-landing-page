@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import { legalDocumentLinkProps } from '@legal/linkProps';
 import logo from "@/assets/luni-logo-transparente (1).png";
 
 const Footer = () => {
@@ -10,12 +12,12 @@ const Footer = () => {
           </div>
 
           <div className="flex items-center gap-8">
-            <a href="#" className="text-xs font-medium text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest">
+            <Link to="/termos-de-uso" {...legalDocumentLinkProps} className="text-xs font-medium text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest">
               Termos
-            </a>
-            <a href="#" className="text-xs font-medium text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest">
+            </Link>
+            <Link to="/politica-de-privacidade" {...legalDocumentLinkProps} className="text-xs font-medium text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest">
               Privacidade
-            </a>
+            </Link>
             <a href="#" className="text-xs font-medium text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest">
               Contato
             </a>

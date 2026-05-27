@@ -7,6 +7,9 @@ import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Checkout from "./pages/Checkout.tsx";
 import CheckoutReturn from "./pages/CheckoutReturn.tsx";
+import TermsOfUsePage from "./pages/TermsOfUsePage.tsx";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage.tsx";
+import PatientConsentPage from "./pages/PatientConsentPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +23,9 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/checkout/retorno" element={<CheckoutReturn />} />
+          <Route path="/termos-de-uso" element={<TermsOfUsePage />} />
+          <Route path="/politica-de-privacidade" element={<PrivacyPolicyPage />} />
+          <Route path="/consentimento-paciente" element={<PatientConsentPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

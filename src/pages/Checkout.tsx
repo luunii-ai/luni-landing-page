@@ -8,7 +8,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { apiBaseUrl, stripePublishableKey, trialPeriodDays } from "@/lib/env";
+import { LEGAL_VERSION } from "@legal/version";
+import { legalDocumentLinkProps } from "@legal/linkProps";
 import { Loader2 } from "lucide-react";
+import { Link as RouterLink } from "react-router-dom";
 
 const Checkout = () => {
   const [searchParams] = useSearchParams();
@@ -22,6 +25,8 @@ const Checkout = () => {
   const [error, setError] = useState<string | null>(null);
   const [loginUrl, setLoginUrl] = useState<string | null>(null);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
+  const [acceptTerms, setAcceptTerms] = useState(false);
+  const [acceptPatientResponsibility, setAcceptPatientResponsibility] = useState(false);
   const firstChargeDateLabel = new Date(
     new Date().setDate(new Date().getDate() + trialPeriodDays),
   ).toLocaleDateString("pt-BR", {
@@ -29,6 +34,12 @@ const Checkout = () => {
     month: "long",
     year: "numeric",
   });
+
+  const canContinue =
+    name.trim().length > 0 &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()) &&
+    acceptTerms &&
+    acceptPatientResponsibility;
 
   const mountRef = useRef<HTMLDivElement>(null);
   const checkoutRef = useRef<StripeEmbeddedCheckout | null>(null);
@@ -81,6 +92,10 @@ const Checkout = () => {
       setError("Plano não selecionado.");
       return;
     }
+    if (!acceptTerms || !acceptPatientResponsibility) {
+      setError("Aceite os termos e a declaração de responsabilidade para continuar.");
+      return;
+    }
     setLoading(true);
     setClientSecret(null);
     destroyCheckout();
@@ -97,6 +112,9 @@ const Checkout = () => {
           checkoutUi: "embedded",
           trialPeriodDays,
           promotionCode: promotionCode.trim() || undefined,
+          termsAccepted: true,
+          termsVersion: LEGAL_VERSION,
+          patientDataResponsibilityAck: true,
         }),
       });
       const data = await res.json().catch(() => ({}));
@@ -130,7 +148,7 @@ const Checkout = () => {
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl md:text-4xl font-medium tracking-tight text-foreground mb-2">Assinatura</h1>
           <p className="text-muted-foreground mb-8">
-            Preencha seus dados e continue para o pagamento seguro (Stripe).
+            Preencha seus dados e continue para o pagamento seguro.
           </p>
 
           {!priceId ? (
@@ -196,6 +214,40 @@ const Checkout = () => {
                       Se deixar em branco, você poderá informar um cupom na tela de pagamento
                     </p>
                   </div>
+                  <div className="space-y-3 rounded-lg border border-border bg-card/40 p-4">
+                    <label className="flex cursor-pointer items-start gap-3 text-sm">
+                      <input
+                        type="checkbox"
+                        checked={acceptTerms}
+                        onChange={(e) => setAcceptTerms(e.target.checked)}
+                        className="mt-1 h-4 w-4 rounded border-input"
+                        required
+                      />
+                      <span>
+                        Li e aceito os{" "}
+                        <RouterLink to="/termos-de-uso" {...legalDocumentLinkProps} className="text-primary underline-offset-4 hover:underline">
+                          Termos de Uso
+                        </RouterLink>{" "}
+                        e a{" "}
+                        <RouterLink to="/politica-de-privacidade" {...legalDocumentLinkProps} className="text-primary underline-offset-4 hover:underline">
+                          Política de Privacidade
+                        </RouterLink>
+                        .
+                      </span>
+                    </label>
+                    <label className="flex cursor-pointer items-start gap-3 text-sm">
+                      <input
+                        type="checkbox"
+                        checked={acceptPatientResponsibility}
+                        onChange={(e) => setAcceptPatientResponsibility(e.target.checked)}
+                        className="mt-1 h-4 w-4 rounded border-input"
+                        required
+                      />
+                      <span>
+                        Declaro ser responsável por obter o consentimento dos pacientes antes de enviar fotos ou dados à plataforma.
+                      </span>
+                    </label>
+                  </div>
                   {error && <p className="text-sm text-destructive">{error}</p>}
                   {loginUrl && (
                     <p className="text-sm text-muted-foreground">
@@ -209,7 +261,7 @@ const Checkout = () => {
                       .
                     </p>
                   )}
-                  <Button type="submit" disabled={loading} className="w-full sm:w-auto">
+                  <Button type="submit" disabled={loading || !canContinue} className="w-full sm:w-auto">
                     {loading ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />

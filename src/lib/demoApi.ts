@@ -19,6 +19,7 @@ export interface RunDemoSimulationParams {
   practiceProfile: DemoPracticeProfile;
   intensidade: DemoIntensity;
   siliconeAck?: boolean;
+  imageRightsAck?: boolean;
 }
 
 export interface DemoEnhanceSuccess {
@@ -56,6 +57,9 @@ export async function runDemoSimulation(params: RunDemoSimulationParams): Promis
   fd.append("intensidade_pct", String(DEMO_SLIDER_REPRESENTATIVE_PCT[params.intensidade]));
   if (params.siliconeAck) {
     fd.append("silicone_ack", "1");
+  }
+  if (params.imageRightsAck) {
+    fd.append("image_rights_ack", "1");
   }
 
   let res: Response;

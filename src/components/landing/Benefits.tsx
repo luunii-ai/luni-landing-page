@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { legalDocumentLinkProps } from "@legal/linkProps";
 import { TrendingUp, Heart, Clock, Shield, Users, Zap, Calculator, Wallet } from "lucide-react";
 
 const benefits = [
@@ -68,7 +70,16 @@ const Benefits = () => {
                 <benefit.icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
               </div>
               <h3 className="text-base font-semibold text-foreground mb-2">{benefit.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{benefit.description}</p>
+              {benefit.title === "Segurança e privacidade" ? (
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Dados protegidos com criptografia em trânsito e fluxos alinhados à LGPD.{" "}
+                  <Link to="/politica-de-privacidade" {...legalDocumentLinkProps} className="text-primary hover:underline">
+                    Saiba mais
+                  </Link>
+                </p>
+              ) : (
+                <p className="text-sm text-muted-foreground leading-relaxed">{benefit.description}</p>
+              )}
             </motion.div>
           ))}
         </div>
