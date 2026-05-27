@@ -6,28 +6,32 @@ const steps = [
     num: "01",
     icon: Upload,
     title: "Adicione os dados do paciente",
-    description: "Faça o cadastro rápido do paciente e faça o upload de uma foto frontal.",
+    description:
+      "Cadastre o paciente (clínica ou consultório cirúrgico) e envie uma foto frontal para simular resultado.",
     active: true,
   },
   {
     num: "02",
     icon: Cpu,
     title: "IA processa a simulação",
-    description: "Nossa inteligência artificial analisa a foto e gera o antes e depois do procedimento.",
+    description:
+      "A IA analisa a foto para harmonização facial ou cenários pré-cirúrgicos e monta antes e depois do procedimento.",
     active: false,
   },
   {
     num: "03",
     icon: Eye,
     title: "Crie o orçamento perfeito",
-    description: "Use o simulador financeiro para definir o preço ideal com margem de lucro garantida.",
+    description:
+      "Use o simulador financeiro para montar valores com custos e margem — mesmo em pacotes mais complexos.",
     active: false,
   },
   {
     num: "04",
     icon: Send,
     title: "Converta o paciente",
-    description: "Apresente o resultado visual aliado ao orçamento estruturado e feche o procedimento com confiança.",
+    description:
+      "Combine visual previsto pela IA com orçamento claro para fechar com mais confiança, em harmonização ou cirurgia.",
     active: false,
   },
 ];

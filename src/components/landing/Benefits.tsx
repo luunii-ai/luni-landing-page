@@ -49,7 +49,7 @@ const Benefits = () => {
             Benefícios
           </span>
           <h2 className="text-4xl md:text-5xl font-medium tracking-tighter text-foreground mb-4">
-            Por que clínicas{" "}
+            Por que clínicas e cirurgiões{" "}
             <span className="font-serif italic text-primary">escolhem a gente</span>
           </h2>
         </motion.div>

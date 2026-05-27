@@ -33,7 +33,7 @@ const CTA = () => {
             </h2>
             <p className="text-lg text-white/80 max-w-xl mx-auto mb-8">
               5 dias de teste grátis. Sem compromisso. Veja na prática como a IA
-              pode transformar o atendimento da sua clínica.
+              pode transformar o atendimento da sua clínica ou consultório.
             </p>
 
             <a

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Play, Check } from "lucide-react";
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import MiniSimulator from "@/components/landing/MiniSimulator";
 import heroVideo from "@/assets/video-hero.mp4";
 
 const Hero = () => {
@@ -76,7 +76,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.35 }}
             className="text-lg text-muted-foreground max-w-xl leading-relaxed"
           >
-            Aumente a confiança dos seus pacientes e a taxa de conversão da sua clínica com nossa plataforma all-in-one de precificação inteligente, gestão de pacientes e simulações estéticas.
+            Aumente a confiança dos seus pacientes e a taxa de conversão da sua clínica ou consultório com nossa plataforma all-in-one de precificação inteligente, gestão de pacientes e simulações estéticas — para harmonização facial e cirurgias eletivas com IA.
           </motion.p>
 
           <motion.div
@@ -128,13 +128,10 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.6 }}
           className="lg:col-span-5 hidden lg:flex justify-center items-center h-full"
         >
-          <div className="relative w-full max-w-lg aspect-video">
+          <div className="relative w-full max-w-lg min-h-[460px]">
             <div className="absolute -inset-10 bg-primary/15 blur-3xl rounded-full -z-10" />
-            <div className="h-full w-full rounded-2xl overflow-hidden border-4 border-white/30 bg-background/85 shadow-2xl shadow-primary/20">
-              <BeforeAfterSlider 
-                beforeImage="/botox-before-45.png" 
-                afterImage="/botox-after-45.png" 
-              />
+            <div className="h-full min-h-[460px] w-full rounded-2xl overflow-hidden border-4 border-white/30 bg-background/85 shadow-2xl shadow-primary/20">
+              <MiniSimulator />
             </div>
           </div>
         </motion.div>

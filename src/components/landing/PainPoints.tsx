@@ -10,7 +10,8 @@ const pains = [
   {
     icon: Calculator,
     title: "Precificação incorreta",
-    description: "Orçamentos feitos sem análise financeira podem gerar prejuízos ocultos para a clínica.",
+    description:
+      "Orçamentos feitos sem análise financeira podem gerar prejuízos ocultos para a clínica ou o consultório.",
   },
   {
     icon: CalendarClock,
@@ -43,7 +44,7 @@ const PainPoints = () => {
             <span className="font-serif italic text-primary">essas dores?</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A maioria das clínicas de estética enfrenta esses desafios diariamente.
+            Clínicas de estética e cirurgiões plásticos enfrentam esses desafios todos os dias.
           </p>
         </motion.div>
 
