@@ -54,7 +54,7 @@ const Hero = () => {
           >
             <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
             <span className="text-xs font-bold tracking-widest uppercase text-primary">
-            Da consulta ao fechamento — em estética
+              Para clínicas e consultórios de estética
             </span>
           </motion.div>
 
@@ -64,9 +64,9 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tighter font-medium text-foreground mb-6"
           >
-            Orçamentos, gestão e{" "}
+            Feche mais orçamentos.{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#000000] via-[#3533cd] to-[#3533cd]">
-              simulação com IA.
+              Menos &ldquo;vou pensar&rdquo;.
             </span>
           </motion.h1>
 
@@ -76,7 +76,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.35 }}
             className="text-lg text-muted-foreground max-w-xl leading-relaxed"
           >
-            Aumente a confiança dos seus pacientes e a taxa de conversão da sua clínica ou consultório com nossa plataforma all-in-one de precificação inteligente, gestão de pacientes e simulações estéticas — para harmonização facial e cirurgias eletivas com IA.
+            Quando o paciente vê o resultado antes, a decisão fica mais clara — e a sua clínica converte mais no mesmo atendimento. Simulação com IA e orçamento no mesmo fluxo.
           </motion.p>
 
           <motion.div
@@ -106,7 +106,7 @@ const Hero = () => {
                   <Play className="w-3.5 h-3.5 text-primary-foreground fill-primary-foreground" />
                 </div>
                 <span className="whitespace-nowrap font-medium tracking-tight text-base text-foreground group-hover:text-foreground transition-colors">
-                  Testar Gratuitamente
+                  Testar 5 dias grátis
                 </span>
                 <span className="inline-flex items-center justify-center bg-primary/10 w-6 h-6 rounded-full ml-1 group-hover:translate-x-0.5 transition-transform text-primary">
                   <ArrowRight className="w-3 h-3" />
@@ -116,9 +116,20 @@ const Hero = () => {
 
             <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
               <Check className="w-3.5 h-3.5 text-primary" strokeWidth={1.5} />
-              <span>Grátis por 5 dias</span>
+              <span>Sem compromisso · no fluxo da sua clínica</span>
             </div>
           </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.7, delay: 0.65 }}
+            className="mt-8 max-w-xl text-sm text-muted-foreground leading-relaxed border-l-2 border-primary/30 pl-4"
+          >
+            Pacientes que usam a simulação relatam que ela{" "}
+            <span className="font-medium text-foreground">ajuda muito a decidir</span>
+            {" "}— o tipo de confiança que reduz o “vou pensar” e avança o orçamento.
+          </motion.p>
         </div>
 
         {/* Right side: Before/After Slider */}

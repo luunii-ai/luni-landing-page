@@ -7,7 +7,8 @@ const benefits = [
   {
     icon: TrendingUp,
     title: "Aumente suas conversões",
-    description: "Pacientes que visualizam o resultado têm muito mais propensão a realizar o procedimento.",
+    description:
+      "Pacientes que visualizam o resultado decidem com mais confiança — menos “vou pensar” e mais orçamentos que avançam.",
   },
   {
     icon: Calculator,
@@ -51,9 +52,12 @@ const Benefits = () => {
             Benefícios
           </span>
           <h2 className="text-4xl md:text-5xl font-medium tracking-tighter text-foreground mb-4">
-            Por que clínicas e cirurgiões{" "}
-            <span className="font-serif italic text-primary">escolhem a gente</span>
+            O que muda no{" "}
+            <span className="font-serif italic text-primary">resultado da clínica</span>
           </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Menos desistência na proposta. Mais clareza no fechamento. Operação mais simples no dia a dia.
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

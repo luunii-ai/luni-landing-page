@@ -4,8 +4,9 @@ import { AlertTriangle, TrendingDown, MessageSquareX, ShieldX, Calculator, Calen
 const pains = [
   {
     icon: AlertTriangle,
-    title: "Pacientes inseguros",
-    description: "Sem conseguir visualizar o resultado, muitos pacientes desistem no último momento.",
+    title: "O clássico “vou pensar”",
+    description:
+      "Sem visualizar o resultado, o paciente adia. O orçamento esfria — e a clínica perde o fechamento no atendimento.",
   },
   {
     icon: Calculator,

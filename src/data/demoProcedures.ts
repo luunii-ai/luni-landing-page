@@ -39,6 +39,7 @@ export const DEMO_CLINIC_GROUPS: DemoProcedureGroup[] = [
       { label: "Preenchimento malar", apiTipo: "Preenchimento Malar" },
       { label: "Bigode chinês", apiTipo: "Bigode chinês (sulco nasogeniano)" },
       { label: "Preenchimento de mento (queixo)", apiTipo: "Preenchimento de mento (queixo)" },
+      { label: "Preenchimento de olheira", apiTipo: "Preenchimento de olheira" },
     ],
   },
   {

@@ -7,7 +7,7 @@ const links = [
   { label: "Como Funciona", href: "#como-funciona" },
   { label: "Benefícios", href: "#beneficios" },
   { label: "Planos", href: "#planos" },
-  { label: "Depoimentos", href: "#depoimentos" },
+  { label: "Prova", href: "#depoimentos" },
 ];
 
 const Navbar = () => {

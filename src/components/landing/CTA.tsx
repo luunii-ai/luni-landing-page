@@ -23,24 +23,24 @@ const CTA = () => {
             <div className="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 mb-6">
               <Sparkles className="w-3.5 h-3.5 text-white fill-white" />
               <span className="text-xs font-bold tracking-widest uppercase text-white">
-                Oferta limitada
+                Para a dona da clínica
               </span>
             </div>
 
             <h2 className="text-3xl md:text-5xl font-medium tracking-tighter text-white mb-4">
-              Comece a simular{" "}
-              <span className="font-serif italic">resultados hoje</span>
+              Teste 5 dias e meça quantos orçamentos{" "}
+              <span className="font-serif italic">avançam</span>
             </h2>
             <p className="text-lg text-white/80 max-w-xl mx-auto mb-8">
-              5 dias de teste grátis. Sem compromisso. Veja na prática como a IA
-              pode transformar o atendimento da sua clínica ou consultório.
+              Sem compromisso. Coloque a simulação no seu atendimento e veja, na
+              prática, menos “vou pensar” e mais fechamento no mesmo fluxo.
             </p>
 
             <a
               href="#planos"
               className="inline-flex items-center gap-3 bg-white text-primary rounded-full px-8 py-4 text-base font-medium hover:scale-105 transition-all duration-300 hover:shadow-lg group"
             >
-              Testar Gratuitamente
+              Testar 5 dias grátis
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </a>
           </div>
